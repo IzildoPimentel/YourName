@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Log.i("Random Tag!", "MainActivity : OnCreate")
 
         val greetingTextView = findViewById<TextView>(R.id.tvHello)
         val inputField = findViewById<EditText>(R.id.etName)
@@ -34,7 +37,9 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             } else {
                 val message = "Welcome $enteredName"
+                Log.i("Random Tag!", message)
                 greetingTextView.text = message
+
                 inputField.text.clear()
                 offersButton.visibility = VISIBLE
             }
@@ -45,5 +50,35 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("USER", enteredName)
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("Random Tag!", "MainActivity : OnStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Random Tag!", "MainActivity : OnResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Random Tag!", "MainActivity : OnStart")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Random Tag!", "MainActivity : OnStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Random Tag!", "MainActivity : OnDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("Random Tag!", "MainActivity : OnRestart")
     }
 }
